@@ -27,6 +27,14 @@ export interface WalletUserDto extends BaseEntity {
   webauthnCredentials: WalletWebauthnCredentialDto[]
 }
 
+/**
+ * DTO containing the data necessary for the client to initiate the webauthn authentication flow
+ */
+export interface WalletWebauthnRequestDto {
+  challenge: string;
+  credentialIds: string[];
+}
+
 // Web Wallet Server Inputs
 
 /**
