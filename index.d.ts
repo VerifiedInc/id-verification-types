@@ -93,3 +93,12 @@ export interface WalletEncodedAssertionCredential {
     userHandle: string | null;
   }
 }
+
+/**
+ * Interface encapsulating options for authenticating the wallet client to the server
+ * with webauthn
+ */
+export interface WalletWebauthnAuthenticationOptions {
+  strategy: 'webauthn';
+  assertion: WalletEncodedAssertionCredential;
+}
