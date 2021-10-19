@@ -102,3 +102,24 @@ export interface WalletWebauthnAuthenticationOptions {
   strategy: 'webauthn';
   assertion: WalletEncodedAssertionCredential;
 }
+
+/**
+ * Interface encapsulating the response from the wallet server when a user is authenticated with webauthn
+ */
+export interface WalletWebauthnAuthenticationResult {
+  accessToken: string;
+  authentication: {
+    strategy: 'webauthn';
+    accessToken: string;
+    payload: {
+      aud: string;
+      exp: number;
+      iat: number;
+      iss: string;
+      jti: string;
+      sub: string;
+    }
+  };
+  isValid: boolean;
+  user: WalletUserDto;
+}
