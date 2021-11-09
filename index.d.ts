@@ -25,6 +25,8 @@ export interface WalletUserDto extends BaseEntity {
   did?: string;
   updateKey?: string;
   webauthnCredentials: WalletWebauthnCredentialDto[]
+  signingKeyId?: string;
+  encryptionKeyId?: string;
 }
 
 /**
