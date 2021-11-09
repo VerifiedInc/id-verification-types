@@ -1,6 +1,6 @@
 {
   "name": "@unumid/web-wallet-types",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "shared typescript types for web wallet",
   "main": "index.js",
   "scripts": {
