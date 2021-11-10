@@ -18,9 +18,7 @@ export interface WalletWebauthnCredentialDto extends BaseEntity {
  * Data transfer object for wallet User
  */
 export interface WalletUserDto extends BaseEntity {
-  name: string;
   email: string;
-  phone: string;
   challenge: string;
   did?: string;
   updateKey?: string;
