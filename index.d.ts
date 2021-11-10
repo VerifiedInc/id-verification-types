@@ -57,9 +57,7 @@ export interface WalletSubjectCreateOptions {
  * Interface encapsulating options for creating a wallet User
  */
 export interface WalletUserCreateOptions {
-  name: string;
   email: string;
-  phone: string;
 }
 
 // Other shared types
