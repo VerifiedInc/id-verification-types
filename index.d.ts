@@ -28,6 +28,24 @@ export interface WalletUserDto extends BaseEntity {
 }
 
 /**
+ * Data transfer object for wallet Issuer
+ */
+export interface WalletIssuerDto extends BaseEntity {
+  name: string;
+  customerUuid: string;
+  issuerUuid: string
+  did: string;
+}
+
+/**
+ * Interface to encapsulate user verification options
+ */
+export interface VerificationOptions {
+  email: string;
+  token: string;
+}
+
+/**
  * DTO containing the data necessary for the client to initiate the webauthn authentication flow
  */
 export interface WalletWebauthnRequestDto {
