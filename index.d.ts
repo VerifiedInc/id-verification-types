@@ -112,20 +112,30 @@ export interface WalletEncodedAssertionCredential {
 
 /**
  * Interface encapsulating options for authenticating the wallet client to the server
- * with webauthn
+ * with a webauthn assertion
  */
-export interface WalletWebauthnAuthenticationOptions {
-  strategy: 'webauthn';
+export interface WalletWebauthnAssertionAuthenticationOptions {
+  strategy: 'webauthnAssertion';
   assertion: WalletEncodedAssertionCredential;
 }
 
 /**
- * Interface encapsulating the response from the wallet server when a user is authenticated with webauthn
+ * Interface encapsulation options for authenticating the wallet client to the server
+ * with a webauthn attestation
  */
-export interface WalletWebauthnAuthenticationResult {
+export interface WalletWebauthnAttestationAuthenticationOptions {
+  strategy: 'webauthnAttestation';
+  attestation: WalletEncodedAttestationCredential;
+  userUuid: string;
+}
+
+/**
+ * Interface encapsulating the base response from the wallet server when a user is authenticated with webauthn
+ */
+export interface WalletWebauthnAuthenticationResult<T extends string> {
   accessToken: string;
   authentication: {
-    strategy: 'webauthn';
+    strategy: T;
     accessToken: string;
     payload: {
       aud: string;
@@ -138,4 +148,17 @@ export interface WalletWebauthnAuthenticationResult {
   };
   isValid: boolean;
   user: WalletUserDto;
+}
+
+/**
+ * The response from the wallet server when a user is authenticated with a webauthn assertion.
+ */
+export type WalletWebauthnAssertionAuthenticationResult = WalletWebauthnAuthenticationResult<'webauthnAssertion'>;
+
+/**
+ * The response from the wallet server when a user is authenticated with a webauthn attestation.
+ * Includes the newly saved WebauthnCredential
+ */
+export interface WalletWebauthnAttestationAuthenticationResult extends WalletWebauthnAuthenticationResult<'webauthnAttestation'> {
+  webauthnCredential: WalletWebauthnCredentialDto;
 }
