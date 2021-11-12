@@ -25,6 +25,7 @@ export interface WalletUserDto extends BaseEntity {
   webauthnCredentials: WalletWebauthnCredentialDto[]
   signingKeyId?: string;
   encryptionKeyId?: string;
+  isEmailVerified: boolean;
 }
 
 /**
