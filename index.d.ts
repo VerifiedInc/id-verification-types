@@ -52,6 +52,7 @@ export interface VerificationOptions {
 export interface WalletWebauthnRequestDto {
   challenge: string;
   credentialIds: string[];
+  userUuid: string; // needed in case the user is not registered with webauthn
 }
 
 // Web Wallet Server Inputs
