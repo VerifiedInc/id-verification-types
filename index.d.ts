@@ -66,6 +66,9 @@ export interface WalletWebauthnRequestDto {
 export interface WalletWebauthnCredentialCreateOptions {
   encodedCredential: WalletEncodedAttestationCredential;
   userUuid: string;
+  browserName?: string;
+  deviceOs?: string;
+  deviceModel?: string;
 }
 
 /**
