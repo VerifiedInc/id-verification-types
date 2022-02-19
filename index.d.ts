@@ -12,6 +12,9 @@ export interface WalletWebauthnCredentialDto extends BaseEntity {
   attestationObject: string;
   clientDataJSON: string;
   user: string;
+  browserName?: string;
+  deviceOs?: string;
+  deviceModel?: string;
 }
 
 /**
