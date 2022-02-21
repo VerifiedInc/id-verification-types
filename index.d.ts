@@ -1,4 +1,4 @@
-import { BaseEntity, PublicKeyInfo } from '@unumid/types';
+import { BaseEntity, PublicKeyInfo, HolderOptions } from '@unumid/types';
 
 // Web Wallet DTOs
 
@@ -135,6 +135,7 @@ export interface WalletWebauthnAttestationAuthenticationOptions {
   strategy: 'webauthnAttestation';
   attestation: WalletEncodedAttestationCredential;
   userUuid: string;
+  holderOptions: HolderOptions;
 }
 
 /**
