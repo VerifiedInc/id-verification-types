@@ -1,4 +1,4 @@
-import { BaseEntity, PublicKeyInfo, HolderOptions } from '@unumid/types';
+import { BaseEntity, PublicKeyInfo, HolderOptions, PublicKeyInfoUpdateOptions } from '@unumid/types';
 
 // Web Wallet DTOs
 
@@ -170,4 +170,12 @@ export type WalletWebauthnAssertionAuthenticationResult = WalletWebauthnAuthenti
  */
 export interface WalletWebauthnAttestationAuthenticationResult extends WalletWebauthnAuthenticationResult<'webauthnAttestation'> {
   webauthnCredential: WalletWebauthnCredentialDto;
+}
+
+/**
+ * An interface to encapsulate the client passing new public key information from new key pairs created on the client. The HolderOptions in this case is Browser info where the keys are stored in WebAuthn.
+ */
+ export interface HolderPublicKeyInfoUpdateOptions {
+  publicKeyInfo: PublicKeyInfoUpdateOptions[]; // keys to update/add
+  holderOptions: HolderOptions; // metadata options for creating a new Holder, if keys are being added
 }

@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@unumid/types": "^3.38.0"
+    "@unumid/types": "^3.39.0"
   }
 }
