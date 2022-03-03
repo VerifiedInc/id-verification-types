@@ -1,4 +1,10 @@
-import { BaseEntity, PublicKeyInfo, HolderOptions, PublicKeyInfoUpdateOptions } from '@unumid/types';
+import {
+  BaseEntity,
+  PublicKeyInfo,
+  HolderOptions,
+  PublicKeyInfoUpdateOptions,
+  HolderDto
+} from '@unumid/types';
 
 // Web Wallet DTOs
 
@@ -31,6 +37,14 @@ export interface WalletUserDto extends BaseEntity {
   encryptionKeyId?: string; // TODO: remove once singular key ids are no longer used by the client
   encryptionKeyIds?: string[];
   isEmailVerified: boolean;
+}
+
+/**
+ * Encriched data transfer object for wallet User, including a newly created holder object from the saas
+ */
+export interface WalletUserEnrichedDto {
+  user: WalletUserDto;
+  holder: HolderDto;
 }
 
 /**
