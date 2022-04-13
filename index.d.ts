@@ -195,3 +195,30 @@ export interface WalletWebauthnAttestationAuthenticationResult extends WalletWeb
   publicKeyInfo: PublicKeyInfoUpdateOptions[]; // keys to update/add
   holderOptions: HolderOptions; // metadata options for creating a new Holder, if keys are being added
 }
+
+/**
+ * Options for authenticating a wallet client to the server via email verification
+ */
+export interface WalletEmailVerificationAuthenticationOptions extends VerificationOptions {
+  strategy: 'emailVerification';
+}
+
+/**
+ * The response from the wallet server when a user is authenticated with email verification
+ */
+export interface WalletEmailVerificationAuthenticationResult {
+  accessToken: string;
+  authentication: {
+    strategy: 'emailVerification';
+    accessToken: string;
+    payload: {
+      aud: string;
+      exp: number;
+      iat: number;
+      iss: string;
+      jti: string;
+      sub: string;
+    }
+  };
+  user: WalletUserDto;
+}
