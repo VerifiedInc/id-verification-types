@@ -37,6 +37,7 @@ export interface WalletUserDto extends BaseEntity {
   encryptionKeyId?: string; // TODO: remove once singular key ids are no longer used by the client
   encryptionKeyIds?: string[];
   isEmailVerified: boolean;
+  referralCode: string;
 }
 
 /**
