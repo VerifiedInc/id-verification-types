@@ -101,6 +101,7 @@ export interface WalletSubjectCreateOptions {
  */
 export interface WalletUserCreateOptions {
   email: string;
+  referralCode?: string;
 }
 
 // Other shared types
