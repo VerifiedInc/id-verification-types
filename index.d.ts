@@ -73,6 +73,7 @@ export interface WalletIssuerDto extends BaseEntity {
 export interface VerificationOptions {
   email: string;
   token: string;
+  referralCode?: string;
 }
 
 /**
