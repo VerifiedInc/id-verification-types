@@ -41,11 +41,20 @@ export interface WalletUserDto extends BaseEntity {
 }
 
 /**
- * Encriched data transfer object for wallet User, including a newly created holder object from the saas
+ * Enriched data transfer object for wallet User, including a newly created holder object from the saas
  */
 export interface WalletUserEnrichedDto {
   user: WalletUserDto;
   holder: HolderDto;
+}
+
+/**
+ * dto representing the user who referred the current user.
+ * Only contains relevant attributes that will be displayed.
+ */
+export interface WalletReferringUserDto {
+  email: string;
+  referralCode: string;
 }
 
 /**
