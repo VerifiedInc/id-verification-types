@@ -234,3 +234,10 @@ export interface WalletEmailVerificationAuthenticationResult {
   };
   user: WalletUserDto;
 }
+
+/**
+ * Interface to encapsulate user VerificationStatus options amongst verified communication channels
+ */
+ export interface VerificationStatusOptions {
+  emailShowVerifiedStatus: boolean;
+}
