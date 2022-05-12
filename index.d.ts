@@ -83,6 +83,7 @@ export interface WalletWebauthnRequestDto {
   challenge: string;
   webauthnCredentials: WalletWebauthnCredentialDto[];
   userUuid: string; // needed in case the user is not registered with webauthn
+  isEmailVerified: boolean; // needed to determine if we can skip verification
 }
 
 // Web Wallet Server Inputs
