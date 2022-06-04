@@ -3,7 +3,8 @@ import {
   PublicKeyInfo,
   HolderOptions,
   PublicKeyInfoUpdateOptions,
-  HolderDto
+  HolderDto,
+  DID
 } from '@unumid/types';
 
 // Web Wallet DTOs
@@ -241,4 +242,13 @@ export interface WalletEmailVerificationAuthenticationResult {
  */
  export interface VerificationStatusOptions {
   emailShowVerifiedStatus: boolean;
+}
+
+/**
+ * Interface to encapsulate options for a Subject did association request for use for an issuer to associate a subject with a did (without a request flow).
+ */
+ export interface SubjectDidAssociationOptions {
+  did: DID;
+  userCode: string;
+  issuerDid: string;
 }
