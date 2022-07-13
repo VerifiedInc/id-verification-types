@@ -7,6 +7,14 @@ import {
   DID
 } from '@unumid/types';
 
+/**
+ * enumerates the different email providers we work with
+ */
+export enum EmailProvider {
+  EWS = 'EWS',
+  GMAIL = 'GMAIL'
+}
+
 // Web Wallet DTOs
 
 /**
@@ -25,6 +33,14 @@ export interface WalletWebauthnCredentialDto extends BaseEntity {
 }
 
 /**
+ * Data transfer object for wallet EmailUser (verified email product user)
+ */
+export interface WalletEmailUserDto extends BaseEntity {
+  connectedEmailProvider?: EmailProvider;
+  isClassifying: boolean;
+}
+
+/**
  * Data transfer object for wallet User
  */
 export interface WalletUserDto extends BaseEntity {
@@ -39,6 +55,7 @@ export interface WalletUserDto extends BaseEntity {
   encryptionKeyIds?: string[];
   isEmailVerified: boolean;
   referralCode: string;
+  emailUser?: WalletEmailUserDto;
 }
 
 /**
