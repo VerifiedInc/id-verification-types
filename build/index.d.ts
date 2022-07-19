@@ -1,3 +1,17 @@
+export interface KYCData {
+    address: string;
+    dob: string;
+    gender: string;
+    fullName: string;
+    docImage: string;
+    docType: string;
+    docCountryId: string;
+    fullFaceImage: string;
+    liveFace: string;
+    liveFaceConfidence: string;
+    faceMatch: string;
+    faceMatchConfidence: string;
+}
 export interface HvConfidence {
     value: string;
     confidence: string;

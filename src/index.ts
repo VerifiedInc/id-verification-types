@@ -1,3 +1,19 @@
+// result type with the leaf data points of various IDV's data
+export interface KYCData {
+  address: string;
+  dob: string;
+  gender: string;
+  fullName: string;
+  docImage: string; // base64 encoded image
+  docType: string; // i.e. 'dl'
+  docCountryId: string; // i.e. 'usa'
+  fullFaceImage: string; // base64 encoded image
+  liveFace: string; // i.e. "yes"
+  liveFaceConfidence: string; // i.e. "high"
+  faceMatch: string; // i.e. "yes"
+  faceMatchConfidence: string; // i.e. "high"
+}
+
 export interface HvConfidence {
   value: string; // i.e. "yes"
   confidence: string; // i.e. "high"
