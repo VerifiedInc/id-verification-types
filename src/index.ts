@@ -1,3 +1,13 @@
+// result type with the leaf data points of various IDV's data
+export interface KYCData {
+  address: string;
+  age: string;
+  dob: string;
+  gender: string;
+  fullName: string;
+  idType: string;
+}
+
 export interface HvConfidence {
   value: string; // i.e. "yes"
   confidence: string; // i.e. "high"
