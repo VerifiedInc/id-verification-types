@@ -1,7 +1,7 @@
 {
-  "name": "@unumid/web-wallet-types",
+  "name": "@unumid/id-verification-types",
   "version": "0.0.10",
-  "description": "shared typescript types for web wallet",
+  "description": "shared typescript types for identity verification provides that unum id uses: currently HyperVerge and Prove",
   "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
