@@ -5,7 +5,14 @@ export interface KYCData {
   dob: string;
   gender: string;
   fullName: string;
-  idType: string;
+  docImage: string; // base64 encoded image
+  docType: string; // i.e. 'dl'
+  docCountryId: string; // i.e. 'usa'
+  fullFaceImage: string; // base64 encoded image
+  liveFace: string; // i.e. "yes"
+  liveFaceConfidence: string; // i.e. "high"
+  faceMatch: string; // i.e. "yes"
+  faceMatchConfidence: string; // i.e. "high"
 }
 
 export interface HvConfidence {
