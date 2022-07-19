@@ -1,7 +1,6 @@
 // result type with the leaf data points of various IDV's data
 export interface KYCData {
   address: string;
-  age: string;
   dob: string;
   gender: string;
   fullName: string;

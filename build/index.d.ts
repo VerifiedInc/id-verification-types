@@ -1,6 +1,5 @@
 export interface KYCData {
     address: string;
-    age: string;
     dob: string;
     gender: string;
     fullName: string;
