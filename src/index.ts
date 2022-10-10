@@ -70,7 +70,7 @@ export interface HvDocScanData {
   selectedCountryId: string; // i.e. "usa"
 }
 
-
+// NEW HV TYPES
 export interface HyperVergeResponse {
   userCode: string;
 }
@@ -92,20 +92,6 @@ export interface HvClientResponse {
   details: HVDetails;
 }
 
-export interface HvResultsApiResponse {
-  applicationStatus: string;
-  results: HvResultModule[];
-  userDetails: HVDetails;
-}
-
-export interface HvResultModule {
-  moduleId: string; // e.g. "module_id_card_validation"
-  imageUrl: string; // e.g. ""https://prod-audit-portal-usa.s3.amazonaws.com/gkyc-us-east-1/readId/2022-10-07/f5q5lt/1665102190083-14fbeb04-0924-4374-addb-7b1a32440691/image.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAZRKK5ZMR5D7ZILGV%2F20221007%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221007T002344Z&X-Amz-Expires=900&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDsaCmFwLXNvdXRoLTEiRjBEAiBb6GZIbOQ2HGFaJv23NQBNqae6uk8ODAUi4pLMNvx7%2BQIgRFWE4K6vuv4DvyqQGty7nAllBkwlqSnk3t0kAga9Pnoq2QQI9P%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2NTU2NzY1MjUzNDciDCx6HC69tOTOQQ5t%2BSqtBPBUYiT3IqR7vgIJqu1UK9sXTr%2BWZTAwrC39NNtBVNFWkHlMQAqIgHA4euFeRRS9ssYz%2FL%2BYlEm82lqJs8dENJ9m6nDicIdYhxkaGjM1unH7g2qy6MCNW%2BtFLMffJ0%2BlSbweIsr2RP1oD56MTBM2eSkKmx9hbeXbgLPmGLDHrqNuSN%2BKKDWegWY%2BRXjXKTMeg7jQSifji9iTdBRbVCZ0tHNhdaz3lFT90SiPOF3QY3EojSuEB3fCTnyRgAivfczl2AzueIJoiF7zgevzKCqYXHwO1ho7RIQ%2BQY5ws%2FnKgtZ%2FASQvfWvN%2F4xgT5HW9B%2Bs0ZhAQlCk98FLujfdkjr3fq%2B9URBEIjrVeYz2ZAbU6Jo0GI6SX8uqH7tQswxrhfjpZ4Bcgnew3Dr50BRRL5B3NVFoOTgPgO6kZSp7PiCQwF8Xo1AoIlai22a%2BHYTFDPOIwpCS28oXpbbbbh3YQsgPgch5rCf3wVS%2FJbPi8Jg2LtXrtqUQriWdtvkOXkP2ePXHMbUkAv0RdjkkPom%2F5cvujXuYGszFJ04mrWymSjAjiFkqqHd6yDdBinv%2BQyDk%2FWohkWpThZKC7z7sISXQUFFIO5wZV6Pq53SqkMw9AD79EfktS1bKwNgMLIYeNP7XrjCUxH3qh5L2wyiu1SQIw13CWAdxPckprLE5yr5VqBIBCWwS2GYJHi8j6YhS7U%2BJ9vU4jtC13jSKC7QAxILMBpmMgM01UXuzV%2BMxm88damKaMJ7O%2FJkGOqoBK8rk9fRg%2BCQKtd1NOzMKhfrIj4UFN98IdHOA%2BjODDx3rq4ix1DK5PvTxww%2BLaVm79mBJHxLsbOd%2FOepyjK5%2B8GNZX8myPDJ%2F%2BLdOK9HbWKRfm6XgHT5o7xlrpP9G9gOgYagYedfkIRUY%2FFnYiPEnZ5I0JAbT8S7JW9yqC8MjfZhHKAXsUlJ1LIqkjms7Iw0QqEBS7Y%2FtvOPmvEFDwXHIeDx1HrTLjXXKDyo%3D&X-Amz-Signature=2bc24fd7272ec5ffa1c096bf3c5c87077254798e3dfdf4f83fea83db7586e0e6&X-Amz-SignedHeaders=host""
-  countrySelected: string; // e.g. "usa"
-  attempts: number; // e.g. 1
-  apiResponse: HvApiResponse;
-}
-
 export interface HvApiResponse {
   status: 'string'; // e.g. "success"
   statusCode: 200,
@@ -113,6 +99,22 @@ export interface HvApiResponse {
     requestId: string,
     transactionId: string,
   },
+  result: {
+    results: HvResultModule[]
+  }
+}
+
+export interface HvResultModule {
+  moduleId: string; // e.g. "module_id_card_validation"
+  imageUrl: string; // e.g. ""https://prod-audit-portal-usa.s3.amazonaws.com/gkyc-us-east-1/readId/2022-10-07/f5q5lt/1665102190083-14fbeb04-0924-4374-addb-7b1a32440691/image.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAZRKK5ZMR5D7ZILGV%2F20221007%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221007T002344Z&X-Amz-Expires=900&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDsaCmFwLXNvdXRoLTEiRjBEAiBb6GZIbOQ2HGFaJv23NQBNqae6uk8ODAUi4pLMNvx7%2BQIgRFWE4K6vuv4DvyqQGty7nAllBkwlqSnk3t0kAga9Pnoq2QQI9P%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARABGgw2NTU2NzY1MjUzNDciDCx6HC69tOTOQQ5t%2BSqtBPBUYiT3IqR7vgIJqu1UK9sXTr%2BWZTAwrC39NNtBVNFWkHlMQAqIgHA4euFeRRS9ssYz%2FL%2BYlEm82lqJs8dENJ9m6nDicIdYhxkaGjM1unH7g2qy6MCNW%2BtFLMffJ0%2BlSbweIsr2RP1oD56MTBM2eSkKmx9hbeXbgLPmGLDHrqNuSN%2BKKDWegWY%2BRXjXKTMeg7jQSifji9iTdBRbVCZ0tHNhdaz3lFT90SiPOF3QY3EojSuEB3fCTnyRgAivfczl2AzueIJoiF7zgevzKCqYXHwO1ho7RIQ%2BQY5ws%2FnKgtZ%2FASQvfWvN%2F4xgT5HW9B%2Bs0ZhAQlCk98FLujfdkjr3fq%2B9URBEIjrVeYz2ZAbU6Jo0GI6SX8uqH7tQswxrhfjpZ4Bcgnew3Dr50BRRL5B3NVFoOTgPgO6kZSp7PiCQwF8Xo1AoIlai22a%2BHYTFDPOIwpCS28oXpbbbbh3YQsgPgch5rCf3wVS%2FJbPi8Jg2LtXrtqUQriWdtvkOXkP2ePXHMbUkAv0RdjkkPom%2F5cvujXuYGszFJ04mrWymSjAjiFkqqHd6yDdBinv%2BQyDk%2FWohkWpThZKC7z7sISXQUFFIO5wZV6Pq53SqkMw9AD79EfktS1bKwNgMLIYeNP7XrjCUxH3qh5L2wyiu1SQIw13CWAdxPckprLE5yr5VqBIBCWwS2GYJHi8j6YhS7U%2BJ9vU4jtC13jSKC7QAxILMBpmMgM01UXuzV%2BMxm88damKaMJ7O%2FJkGOqoBK8rk9fRg%2BCQKtd1NOzMKhfrIj4UFN98IdHOA%2BjODDx3rq4ix1DK5PvTxww%2BLaVm79mBJHxLsbOd%2FOepyjK5%2B8GNZX8myPDJ%2F%2BLdOK9HbWKRfm6XgHT5o7xlrpP9G9gOgYagYedfkIRUY%2FFnYiPEnZ5I0JAbT8S7JW9yqC8MjfZhHKAXsUlJ1LIqkjms7Iw0QqEBS7Y%2FtvOPmvEFDwXHIeDx1HrTLjXXKDyo%3D&X-Amz-Signature=2bc24fd7272ec5ffa1c096bf3c5c87077254798e3dfdf4f83fea83db7586e0e6&X-Amz-SignedHeaders=host""
+  countrySelected: string; // e.g. "usa"
+  attempts: number; // e.g. 1
+  apiResponse: HvResultsApiResponse;
+}
+
+export interface HvResultsApiResponse {
+  applicationStatus: string;
+  userDetails: HVDetails;
   result: {
     details: HvApiResponseResultDetails[],
     summary: {
@@ -135,7 +137,7 @@ export interface HvFieldsExtracted {
   countryCode: {
     value: string;
   },
-  dataOfBirth: {
+  dateOfBirth: {
     value: string;
   },
   dateOfExpirary: {
