@@ -61,8 +61,12 @@ export interface HvDocScanData {
     docListData: Array<HvDocData>;
     selectedCountryId: string;
 }
+/**
+ * NEW HV TYPES
+ */
 export interface HyperVergeResponse {
     userCode: string;
+    dob: string;
 }
 export interface HVDetails {
     dateOfBirth: string;

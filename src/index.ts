@@ -70,9 +70,14 @@ export interface HvDocScanData {
   selectedCountryId: string; // i.e. "usa"
 }
 
-// NEW HV TYPES
+/**
+ * NEW HV TYPES
+ */
+
+// the demo's HypberVerge Service response, not directly from HV.
 export interface HyperVergeResponse {
   userCode: string;
+  dob: string;
 }
 
 export interface HVDetails {
