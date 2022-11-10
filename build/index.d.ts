@@ -149,6 +149,14 @@ export interface HvFieldsExtracted {
 export interface HvAddress {
     value: string;
 }
+/**
+ * Options object for logging in to HyperVerge
+ */
+export interface HVLoginOptions {
+    appId: string;
+    appKey: string;
+    expiry: number;
+}
 export interface HVLoginResult {
     token: string;
 }
