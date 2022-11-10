@@ -3,7 +3,7 @@ This project contains all of our shared TypeScript types for various IDVs Unum I
 These types are self defined based on response bodies from various IDV partners.
 
 Currently types are defined to service:
-- **HyperVerge** document scans
+- **HyperVerge** document scans, APIs, and SDKs
 - **Prove** PreFill & InstantLink APIs.
 
 ## Naming Conventions
