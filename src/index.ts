@@ -80,22 +80,6 @@ export interface HyperVergeResponse {
   dob: string;
 }
 
-export interface HVDetails {
-  dateOfBirth: string;
-  firstName: string;
-  fullName: string;
-  // eslint-disable-next-line camelcase
-  id_back_imagePath: string;
-  idNumber: string;
-  lastName: string;
-  middleName: string;
-}
-
-export interface HvClientResponse {
-  status: string;
-  transactionId: string;
-  details: HVDetails;
-}
 
 export interface HvApiResponse {
   status: 'string'; // e.g. "success"
@@ -108,6 +92,18 @@ export interface HvApiResponse {
     results: HvResultModule[]
   }
 }
+
+export const isHVClientResponseSuccess = (response: HVClientResponse): response is HVClientResponseSuccess => {
+  return response.status === 'auto_approved' || response.status === 'auto_declined' || response.status === 'needs_review';
+};
+
+export const isHVClientResponseCancelled = (response: HVClientResponse): response is HVClientResponseCancelled => {
+  return response.status === 'user_cancelled';
+};
+
+export const isHVClientResponseError = (response: HVClientResponse): response is HVClientResponseError => {
+  return response.status === 'error';
+};
 
 export interface HvResultModule {
   moduleId: string; // e.g. "module_id_card_validation"
@@ -180,4 +176,186 @@ export interface HvFieldsExtracted {
 // contains other empty fields in the response body, which is why has it own type
 export interface HvAddress {
   value: string;
+}
+
+// HV Login types
+export interface HVLoginResult {
+  token: string;
+}
+
+/**
+ * Properties shared by all HyperVerge login responses
+ */
+export interface HVLoginBaseResponse {
+  status: 'success' | 'failure'; // e.g. "success"
+  statusCode: '200' | '400' | '401' | '500'; // these are just the status codes I've seen, but there may be more
+}
+
+/**
+ * Success response from HyperVerge login
+ */
+export interface HVLoginSuccessResponse extends HVLoginBaseResponse {
+  result: HVLoginResult;
+  status: 'success';
+  statusCode: '200';
+}
+
+/**
+ * Error response from HyperVerge login
+ */
+export interface HVLoginErrorResponse extends HVLoginBaseResponse {
+  status: 'failure';
+  statusCode: '400' | '401' | '500';
+  error: string;
+}
+
+// a union type of all possible Hyperverge login responses
+export type HVLoginResponse = HVLoginSuccessResponse | HVLoginErrorResponse;
+
+/**
+ * Typeguard to check if an HVLoginResponse is an HVLoginSuccessResponse
+ */
+export const isHVLoginSuccessResponse = (response: HVLoginResponse): response is HVLoginSuccessResponse => {
+  return response.status === 'success';
+};
+
+/**
+ * Typeguard to check if an HVLoginResponse is an HVLoginErrorResponse
+ */
+export const isHVLoginErrorResponse = (response: HVLoginResponse): response is HVLoginErrorResponse => {
+  return response.status === 'failure';
+};
+
+// HV Web SDK types
+export interface HVDetails {
+  address: string;
+  country: string;
+  dateOfBirth: string;
+  faceMatchAction: string;
+  firstName: string;
+  fullName: string;
+  idNumber: string;
+  idType: string;
+  // eslint-disable-next-line camelcase
+  id_back_imagePath: string;
+  livenessAction: string;
+  lastName: string;
+}
+
+export interface HVClientResponseBase {
+  status: 'user_cancelled' | 'auto_approved' | 'auto_declined' | 'needs_review' | 'error';
+  transactionId: string;
+}
+
+export interface HVClientResponseSuccess extends HVClientResponseBase {
+  status: 'auto_approved' | 'auto_declined' | 'needs_review';
+  details: HVDetails;
+};
+
+export interface HVClientResponseCancelled extends HVClientResponseBase {
+  status: 'user_cancelled';
+  latestModule: string; // the last module that was executed before the user cancelled the flow
+};
+
+export interface HVClientResponseError extends HVClientResponseBase {
+  status: 'error';
+  errorCode: number;
+  errorMessage: string;
+  latestModule: string; // the last module that was executed before the error occurred
+}
+
+export type HVClientResponse = HVClientResponseSuccess | HVClientResponseCancelled | HVClientResponseError;
+
+/**
+ * The HyperKycConfig object from the HyperVerge JS SDK
+ */
+export interface HVHyperKycConfigInstance {
+  accessToken: string;
+  allowedStatusCodes: number[];
+  apiFailureLottie: string;
+  apiProcessingLottie: string;
+  autoCaptureDuration: number;
+  baseUrl: string;
+  cancelledTag: string;
+  chooseDocumentCaptureOption: boolean;
+  configNumber: number;
+  configUrl: string;
+  countriesButton: string;
+  countriesDesc: string;
+  countriesSearchText: string;
+  countriesTitle: string;
+  countryListPopupId: string;
+  countryListSelectId: string;
+  countryListSelectPopupId: string;
+  docPickerDesc: string;
+  docPickerTitle: string;
+  docTextConfig: Record<string, string>;
+  docUIConfig: Record<string, string>;
+  docUrl: string;
+  documentHeaders: Record<string, string>;
+  documentParams: Record<string, string>;
+  documentResult: Array<any>;
+  documentSelectId: string;
+  documentSelectPopupId: string;
+  documentSides: Array<string>;
+  documentType: string;
+  exitConditions: Array<string>;
+  faceAutoCapture: boolean;
+  faceMatchResult: Array<any>;
+  faceTextConfig: Record<string, string>;
+  faceUIConfig: Record<string, string>;
+  faceUrl: string;
+  failureTag: string;
+  flow: Record<string, string>;
+  footerShield: string;
+  footerText: string;
+  formModulePopupId: string;
+  formModuleUIConfig: Record<string, string>;
+  globals: Record<string, string>;
+  handleDocRetries: boolean;
+  handleFaceRetries: boolean;
+  imageBackArrow: string;
+  imageClose: string;
+  inputs: Record<string, string>;
+  kycWorkflow: Array<any>;
+  languageSource: string;
+  languageUsed: null;
+  livenessHeaders: Record<string, string>;
+  livenessParams: Record<string, string>;
+  livenessResult: Array<any>;
+  livenessThreshold: number;
+  qrChoicePopupId: string;
+  qrGetApprovedFaster: string;
+  qrPhoneCameraIsBetter: string;
+  qrPopupId: string;
+  qrTextConfig: Record<string, string>;
+  qrWaitingForResultsPopupId: string;
+  regionName: string;
+  resultStatus: Record<string, string>;
+  shouldShowDocInstructionPage: boolean;
+  shouldShowDocReviewScreen: boolean;
+  shouldShowFaceInstructionPage: boolean;
+  successTag: string;
+  supportedLanguages: Array<string>;
+  textConfig: Record<string, string>;
+  totalConfigs: number;
+  transactionId: string;
+  userWorkflow: Record<string, string>;
+  videoRecording: boolean;
+  videoRecordingDuration: number;
+  workflowId: string;
+}
+
+/**
+ * Constructor for the HyperKycConfig object added to window by the HyperVerge JS SDK
+ */
+export interface HVHyperKycConfigConstructor {
+  new(accessToken: string, workflowId: string, transactionId: string): HVHyperKycConfigInstance
+}
+
+/**
+ * The HyperKycModule added to window by the HyperVerge JS SDK
+ */
+export interface HVHyperKycModule {
+  launch: (config: HVHyperKycConfigInstance, handler: (result: HVClientResponse) => void) => void;
 }
